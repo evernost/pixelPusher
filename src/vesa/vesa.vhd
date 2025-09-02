@@ -5,7 +5,7 @@
 -- File type      : VHDL 2008
 -- Purpose        : VESA controller top level
 -- Author         : QuBi (nitrogenium@outlook.fr)
--- Creation date  : August 25th, 2025
+-- Creation date  : Monday, 25 August 2025
 -- ----------------------------------------------------------------------------
 -- Best viewed with space indentation (2 spaces)
 -- ============================================================================
@@ -47,12 +47,15 @@ port
   clock           : in STD_LOGIC;
   reset           : in STD_LOGIC; 
   
+  -- Video input data
+  pixel_prefetch  : out STD_LOGIC;                      -- same as 'pixel_fetch' but 1 clock cycle ahead
+  pixel_fetch     : out STD_LOGIC;                      -- when '1': pixel data is fetched on the data bus on the next cycle
   pixel_addr_x    : out STD_LOGIC_VECTOR(12 downto 0);  -- x coordinate of the pixel about to be displayed
   pixel_addr_y    : out STD_LOGIC_VECTOR(12 downto 0);  -- y coordinate of the pixel about to be displayed
-  pixel_fetch     : out STD_LOGIC;                      -- when '1': pixel data is fetched on the data bus
-  pixel_prefetch  : out STD_LOGIC;                      -- same as 'pixel_fetch' but 1 clock cycle ahead
-  pixel_data      : in STD_LOGIC_VECTOR(PIXEL_DATA_BUS-1 downto 0);
+  pixel_rgb_val   : in STD_LOGIC_VECTOR(PIXEL_DATA_BUS-1 downto 0);
+  pixel_lut_index : in STD_LOGIC_VECTOR(LUT_SIZE-1 downto 0);
 
+  -- VGA output signals
   display_hsync   : out STD_LOGIC;
   display_vsync   : out STD_LOGIC;
   display_data    : out STD_LOGIC_VECTOR(PIXEL_DATA_BUS-1 downto 0)

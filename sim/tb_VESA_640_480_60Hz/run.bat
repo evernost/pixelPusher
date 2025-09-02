@@ -5,7 +5,7 @@
 :: File type     : Batch script for Windows
 :: Purpose       : script for syntax check, compilation and simulation
 :: Author        : QuBi (nitrogenium@outlook.fr)
-:: Creation date : August 25th, 2025
+:: Creation date : Monday, 25 August 2025
 :: ----------------------------------------------------------------------------
 :: Best viewed with space indentation (2 spaces)
 :: ============================================================================
